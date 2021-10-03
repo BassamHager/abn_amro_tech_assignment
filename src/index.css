@@ -5,6 +5,7 @@
 html {
   font-size: 62.5%;
   font-family: "Karla", monospace, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -14,4 +15,17 @@ body {
 
 a {
   text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.border__rounded {
+  border-radius: 20px;
 }

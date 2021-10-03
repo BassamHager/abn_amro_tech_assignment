@@ -1,9 +1,16 @@
-import React from "react";
+import "./SearchShow.css";
 
 const SearchShow = () => {
   return (
-    <div>
-      <h2>Search</h2>
+    <div className="container">
+      <form className="search-form">
+        <input
+          type="input"
+          placeholder="Search..."
+          className="search-bar border__rounded"
+        />
+        <i class="fas fa-search"></i>
+      </form>
     </div>
   );
 };

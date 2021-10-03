@@ -1,25 +1,43 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// pages
 import Footer from "./components/footer/Footer";
-import Navbar from "./components/navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
+import ShowDetailsPage from "./pages/ShowDetailsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
-function App() {
-  return (
-    <div className="app-container">
-      {/* navbar */}
-      <Navbar />
+// components
+import Navbar from "./components/navbar/Navbar";
+import SearchShow from "./components/search/SearchShow";
 
-      {/* home */}
-      <HomePage />
+const App = () => (
+  <Router>
+    {/* navbar */}
+    <Navbar />
+    {/* searchbar */}
+    <SearchShow />
 
-      {/* about */}
-      <AboutPage />
+    <div className="container">
+      <Switch>
+        {/* home */}
+        <Route exact path="/" component={HomePage} />
 
-      {/* footer */}
-      <Footer />
+        {/* about */}
+        <Route path="/about" component={AboutPage} />
+
+        {/* show details */}
+        <Route path="/show/:id" component={ShowDetailsPage} />
+
+        {/* not found */}
+        <Route component={NotFoundPage} />
+      </Switch>
     </div>
-  );
-}
+
+    {/* footer */}
+    <Footer />
+  </Router>
+);
 
 export default App;

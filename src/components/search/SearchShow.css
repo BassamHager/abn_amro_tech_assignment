@@ -1,0 +1,13 @@
+.search-form {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.search-bar {
+  width: 60%;
+  margin: 2rem;
+  font-size: 4rem;
+  color: #f2c000;
+  padding: 1rem 1rem 1rem 1.5rem;
+}
