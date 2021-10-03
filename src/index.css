@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Karla", monospace, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem; /* 16px */
+}
+
+a {
+  text-decoration: none;
+}

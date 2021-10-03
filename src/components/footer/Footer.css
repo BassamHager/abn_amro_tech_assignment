@@ -1,0 +1,8 @@
+.footer {
+  display: grid;
+  place-items: center;
+  background: #009286;
+  height: 20vh;
+  margin-top: 80vh;
+  color: #f2c000;
+}
