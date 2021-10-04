@@ -9,7 +9,7 @@ const SearchShow = () => {
           placeholder="Search..."
           className="search-bar border__rounded"
         />
-        <i class="fas fa-search"></i>
+        <i className="fas fa-search"></i>
       </form>
     </div>
   );

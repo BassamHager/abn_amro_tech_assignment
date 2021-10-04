@@ -2,6 +2,10 @@
   background: #009286;
 }
 
+.navbar-container header {
+  margin-left: 20px;
+}
+
 .navbar-container__flex {
   display: flex;
   justify-content: space-between;

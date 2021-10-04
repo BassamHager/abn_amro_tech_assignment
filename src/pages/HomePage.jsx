@@ -1,11 +1,23 @@
-import ShowCard from "../components/showCard/ShowCard";
+import { useContext, useEffect } from "react";
+// components
+// import ShowCard from "../components/showCard/ShowCard";
+// context
+import { ShowsContext } from "../context/shows/showsContext";
 
 const HomePage = () => {
-  return (
-    <div>
-      <h1>Home</h1>
+  const { fetchShowsLists, genreRows, loading } = useContext(ShowsContext);
 
-      <ShowCard />
+  useEffect(() => {
+    fetchShowsLists();
+  }, [loading]);
+
+  return (
+    <div style={{ color: "plum", textAlign: "center" }}>
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : (
+        Object.keys(genreRows).map((e) => <h2 key={e}>{e}</h2>)
+      )}
     </div>
   );
 };
