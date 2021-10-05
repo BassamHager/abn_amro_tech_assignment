@@ -1,7 +1,7 @@
 import { createContext, useReducer, useCallback } from "react";
 
 // types
-import { SET_LOADING, FETCH_FULL_DATA, SET_GENRES_LISTS } from "../types";
+import { SET_LOADING, FETCH_SHOWS_DATA, SET_GENRES_LISTS } from "../types";
 
 // reducer
 import showsReducer from "./showsReducer";
@@ -15,37 +15,40 @@ export const ShowsState = ({ children }) => {
   // initial state
   const initialState = {
     showsData: [],
-    genreLists: {},
+    genreLists: [],
     isLoading: false,
   };
 
   // updated state
   const [state, dispatch] = useReducer(showsReducer, initialState);
 
-  // helper function: fetch full data, update state & return fetched
+  // helper function: fetch full data, update state
   // const fetchFullData = useCallback(async () => {
   //   try {
   //     // fetch url - todo
   //     // const fetchedData = await fetch(process.env.REACT_APP_FULL_DATA_ENDPOINT);
+  //     const fetchedData = await fetch(
+  //       "https://www.youtube.com/watch?v=jiJJ2V8K1ik"
+  //     );
+  //     const parsedData = await fetchedData.json();
 
   //     // update state
-  //     dispatch({ type: FETCH_FULL_DATA, payload: mockData });
+  //     dispatch({ type: FETCH_SHOWS_DATA, payload: parsedData });
 
-  //     // return fetched data
-  //     return mockData;
+  //     // return parsedData;
   //   } catch (error) {
   //     console.error(error);
   //   }
   // }, []);
 
   // helper function: takes array of objects & returns a new Map its key is genre & its value is array of objects
-  const filterGenreLists = (listsArray) => {
+  const filterGenreLists = useCallback((listsArray) => {
     // filter by few desired genres - select few from data - todo
     const desiredGenres = ["Action", "Comedy", "Drama"]; // update lower - todo
 
     try {
       const filteredListsMap = listsArray.reduce((acc, cur) => {
-        const genres = cur?.genres;
+        const genres = cur.genres;
 
         // filter
         const filtered = genres?.filter((genre) =>
@@ -66,10 +69,10 @@ export const ShowsState = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, []);
 
   // helper function: takes an object & returns it with values (arrays) sorted by rating & limited length to 10
-  const sortAndLimitLists = (map) => {
+  const sortAndLimitLists = useCallback((map) => {
     try {
       // limit length of lists into 10 max
       map.forEach((value, key) =>
@@ -85,7 +88,7 @@ export const ShowsState = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, []);
 
   // filter shows per genre, sort by rating & update the state
   const setGenreLists = useCallback(async () => {
@@ -93,22 +96,26 @@ export const ShowsState = ({ children }) => {
       // update loading status
       dispatch({ type: SET_LOADING });
 
-      // fetch full data
-      //const data = await fetchFullData();
-      const dataArr = mockData;
+      // fetch shows data
+      // await fetchFullData();
+      const res = await mockData;
 
       // filter lists per genre
-      const listsMap = filterGenreLists(dataArr);
+      // const listsMap = filterGenreLists(mockData);
+      const listsMap = filterGenreLists(res);
 
       // sort by rating & limit length to 10
-      const sortedListsMap = sortAndLimitLists(listsMap);
+      const sortedListsMap = Array.from(
+        sortAndLimitLists(listsMap),
+        ([key, value]) => [key, value]
+      );
 
       // update state
       dispatch({ type: SET_GENRES_LISTS, payload: sortedListsMap });
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  }, [filterGenreLists, sortAndLimitLists]);
 
   // return provider tags loaded with desired data to surround the components that need this data
   return (

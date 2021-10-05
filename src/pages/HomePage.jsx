@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
+import GenreRow from "../components/genreRow/GenreRow";
 // components
-import ShowCard from "../components/showCard/ShowCard";
+// import ShowCard from "../components/showCard/ShowCard";
 // context
 import { ShowsContext } from "../context/shows/showsContext";
 
@@ -12,18 +13,13 @@ const HomePage = () => {
     setGenreLists();
   }, []);
 
-  const displayRow = () => {
-    console.log(genreLists);
-    return (
-      <div>
-        <h1>row</h1>
-      </div>
-    );
-  };
-
   return (
     <div style={{ color: "plum", textAlign: "center", minHeight: "60vh" }}>
-      {loading ? <h2>Loading...</h2> : displayRow()}
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : (
+        genreLists.map((list) => <GenreRow key={list[0]} res={list} />)
+      )}
     </div>
   );
 };
