@@ -9,9 +9,10 @@ const showsReducer = (state, action) => {
     case SET_LOADING:
       return { ...state, isLoading: true };
     case FETCH_FULL_DATA:
-      return { ...state, data: payload };
+      return { ...state, showsData: payload };
     case SET_GENRES_LISTS:
-      return { ...state, genreRows: payload, isLoading: false };
+      return { ...state, genreLists: payload, isLoading: false };
+
     default:
       return state;
   }
