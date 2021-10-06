@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import AlertsReducer from "./alertsReducer";
 import { SET_ALERT, CLEAR_ALERT } from "../types";
 
-export const AlertsContext = createContext();
+export const AlertsContext = createContext({});
 
 export const AlertsState = ({ children }) => {
   // initial state
