@@ -1,5 +1,10 @@
 // types
-import { SET_LOADING, FETCH_SHOWS_DATA, SET_GENRES_LISTS } from "../types";
+import {
+  SET_LOADING,
+  FETCH_SHOWS_DATA,
+  SET_GENRES_LISTS,
+  SEARCH_MATCHING_SHOWS,
+} from "../types";
 
 // update the state as per the action data
 const showsReducer = (state, action) => {
@@ -12,6 +17,8 @@ const showsReducer = (state, action) => {
       return { ...state, showsData: payload };
     case SET_GENRES_LISTS:
       return { ...state, genreLists: payload, isLoading: false };
+    case SEARCH_MATCHING_SHOWS:
+      return { ...state, matchingShows: payload, isLoading: false };
 
     default:
       return state;

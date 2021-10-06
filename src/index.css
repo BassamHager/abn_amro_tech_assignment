@@ -1,15 +1,25 @@
+:root {
+  --main-color: #009286;
+  --theme-color: #004943;
+  --secondary-color: #f2c000;
+  --dark-secondary-color: #796000;
+  --darkener-color: rgba(0, 0, 0, 0.5);
+}
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   font-size: 62.5%;
   font-family: "Karla", monospace, sans-serif;
   scroll-behavior: smooth;
+  background: var(--theme-color);
 }
 
 body {
-  margin: 0;
   font-size: 1.6rem; /* 16px */
 }
 
@@ -21,6 +31,7 @@ button {
   cursor: pointer;
 }
 
+/* utils */
 .container {
   max-width: 1200px;
   margin: auto;

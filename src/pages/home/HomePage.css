@@ -1,0 +1,10 @@
+.homePage_container {
+  text-align: center;
+  height: 60vh;
+}
+
+.searched__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

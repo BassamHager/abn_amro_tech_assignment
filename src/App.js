@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // pages
 import Footer from "./components/footer/Footer";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/home/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ShowDetailsPage from "./pages/ShowDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -16,6 +16,7 @@ const App = () => (
   <Router>
     {/* navbar */}
     <Navbar />
+
     {/* searchbar */}
     <SearchShow />
 

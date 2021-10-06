@@ -1,13 +1,8 @@
 .card {
   position: relative;
-  /* 
-  top: 50%;
-  left: 5%;
-  transform: translate(-50%, -50%); */
   min-width: 250px;
   height: 375px;
   margin: 2rem 1.2rem;
-  /* background-color: #000; */
   overflow: hidden;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
@@ -16,9 +11,8 @@
 .card:hover {
   cursor: pointer;
   transform: scale(1.1);
-  transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in-out;
   box-shadow: 0 8px 14px rgba(0, 0, 0, 0.5);
-  /* border-radius: 4px; */
 }
 
 .card .poster {
@@ -27,7 +21,6 @@
 }
 
 .card .poster::before {
-  /* content: ""; */
   position: absolute;
   bottom: -182px;
   left: 0;
@@ -47,12 +40,12 @@ img {
   object-fit: contain;
 }
 
-.card .poster img {
+.card img {
   width: 100%;
   transition: 0.5s;
 }
 
-.card:hover .poster img {
+.card:hover img {
   filter: blur(5px);
   transform: translateY(-50px);
 }
@@ -74,6 +67,7 @@ img {
 .card:hover .details {
   bottom: 0;
   filter: blur(0);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .details h2 {
@@ -86,22 +80,31 @@ img {
 .rating {
   position: relative;
   padding: 5px 0;
+  color: var(--dark-secondary-color);
+  font-weight: 700;
+}
+
+.card:hover .rating {
+  color: goldenrod;
 }
 
 .rating .fas {
-  color: goldenrod;
   margin-right: 2px;
   font-size: 1.6rem;
 }
 
 .tags {
   position: relative;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   display: flex;
   flex-wrap: wrap;
 }
 
 .tags span {
+  display: none;
+}
+
+.card:hover .tags span {
   padding: 2px 5px;
   margin-right: 2px;
   color: #fff;
@@ -128,11 +131,17 @@ img {
 }
 
 .info {
+  color: transparent;
+}
+
+.card:hover .info {
+  padding-top: 1rem;
   color: #fff;
 }
 
 .info p {
-  margin: 15px 0 10px;
+  /* margin: 15px 0 10px; */
+  margin: 3rem auto;
 }
 
 .star {

@@ -1,7 +1,14 @@
 import { createContext, useReducer, useCallback } from "react";
 
 // types
-import { SET_LOADING, FETCH_SHOWS_DATA, SET_GENRES_LISTS } from "../types";
+import {
+  SET_LOADING, // set loading = true
+  FETCH_SHOWS_DATA, // fetch for loading homepage
+  SET_GENRES_LISTS, // limit amount of shows filtered by genre & rating
+  SET_SHOW_DETAILS, // show clicked show details
+  CLEAR_SHOW_DETAILS, // clear show details
+  SEARCH_MATCHING_SHOWS, // fetch shows where names matching search input
+} from "../types";
 
 // reducer
 import showsReducer from "./showsReducer";
@@ -14,13 +21,17 @@ export const ShowsContext = createContext();
 export const ShowsState = ({ children }) => {
   // initial state
   const initialState = {
-    showsData: [],
-    genreLists: [],
+    showsData: [], // first homepage load fetched
+    genreLists: [], // limited amount of shows filtered by genre & rating
+    matchingShows: [], // all shows their names matching the search input
+    showDetails: {}, // clicked show details
     isLoading: false,
   };
 
   // updated state
   const [state, dispatch] = useReducer(showsReducer, initialState);
+  // destructure state
+  const { isLoading, genreLists, matchingShows, showDetails } = state;
 
   // helper function: fetch full data, update state
   // const fetchFullData = useCallback(async () => {
@@ -117,12 +128,42 @@ export const ShowsState = ({ children }) => {
     }
   }, [filterGenreLists, sortAndLimitLists]);
 
+  // search show
+  const searchShow = useCallback(async (searchedInput) => {
+    try {
+      // update loading
+      dispatch({ type: SET_LOADING });
+
+      // fetch data
+      const fetchedMatched = await fetch(
+        `https://api.tvmaze.com/search/shows?q=${searchedInput}`
+      );
+
+      const parsedResponse = await fetchedMatched.json();
+
+      // update state
+      dispatch({ type: SEARCH_MATCHING_SHOWS, payload: parsedResponse });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
   // return provider tags loaded with desired data to surround the components that need this data
   return (
     <ShowsContext.Provider
       value={{
+        isLoading,
+
+        // homepage loading
+        genreLists,
         setGenreLists,
-        genreLists: state.genreLists,
+
+        // search show
+        matchingShows,
+        searchShow,
+
+        // show details
+        showDetails,
       }}
     >
       {children}

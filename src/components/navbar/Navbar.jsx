@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="navbar-container">
-      <div className="container navbar-container__flex">
+    <div className="navbar__container container__sticky">
+      <div className="container container__flex">
         {/* main title */}
         <header>
           <Link to="/">
@@ -18,13 +18,13 @@ const Navbar = () => {
 
         {/* nav items */}
         <nav>
-          <Link to="/" className="nav-link">
+          <Link to="/" className="nav__link">
             Home
           </Link>
-          <Link to="/about" className="nav-link">
+          <Link to="/about" className="nav__link">
             about
           </Link>
-          <button className="nav-link">Settings</button>
+          <button className="nav__link">Settings</button>
         </nav>
       </div>
     </div>

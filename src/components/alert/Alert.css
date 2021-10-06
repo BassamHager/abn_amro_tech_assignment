@@ -1,0 +1,21 @@
+.alert {
+  padding: 10px 17px;
+  font-size: 2rem;
+  border: 1px solid var(--darkener-color);
+  margin: 1rem 0;
+}
+
+.alert-warning {
+  background-color: lightyellow;
+  border: 1px solid yellow;
+}
+
+.alert-danger {
+  background-color: lightcoral;
+  border: 1px solid orangered;
+}
+
+.alert-info {
+  background-color: lightblue;
+  border: 1px solid blue;
+}

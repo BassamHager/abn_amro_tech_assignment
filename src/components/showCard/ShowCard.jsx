@@ -1,13 +1,13 @@
 import "./ShowCard.css";
 
-const ShowCard = ({ name, id, image, summary, genres }) => {
+const ShowCard = ({ name, id, image, summary, genres, rating }) => {
   const filterString = (string) => {
     return string.replace(/(<([^>]+)>)/gi, "");
   };
 
   return (
     <div className="card">
-      {/* <div className="poster"></div> */}
+      {/* card image */}
       <img
         src={
           image?.medium ||
@@ -16,26 +16,39 @@ const ShowCard = ({ name, id, image, summary, genres }) => {
         alt={name}
       />
 
+      {/* show details */}
       <div className="details">
+        {/* show name */}
         <h2>{name}</h2>
-        {/* dynamic - todo */}
+
+        <hr />
+
+        {/* rating dynamic - todo */}
         <div className="rating">
-          <p>rating:</p>
           <i className="fas fa-star"></i>
           <i className="fas fa-star"></i>
           <i className="fas fa-star"></i>
           <i className="fas fa-star"></i>
           <i className="fas fa-star" aria-hidden="true"></i>
-          <span>4/5</span>
+          <span> {rating}</span>
         </div>
-        <div className="tags">
-          {console.log(genres)}
-          {genres?.map((genre) => (
-            <span className={genre.toLowerCase()}> {genre} </span>
-          ))}
-        </div>
+
+        {/* show summary */}
         <div className="info">
-          <p>{filterString(summary).substring(0, 50)}...</p>
+          <p>
+            {filterString(summary || "").substring(0, 100) ||
+              "No summary found!"}
+            ...
+          </p>
+        </div>
+
+        {/* genre tags */}
+        <div className="tags">
+          {genres?.map((genre) => (
+            <span key={genre} className={genre.toLowerCase()}>
+              {genre}
+            </span>
+          ))}
         </div>
       </div>
     </div>
