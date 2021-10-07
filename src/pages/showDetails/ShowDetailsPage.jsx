@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 
 // components
 import ShowCard from "../../components/showCard/ShowCard";
+import Spinner from "../../components/spinner/Spinner";
 
 // context
 import { ShowsContext } from "../../context/shows/showsContext";
@@ -20,7 +21,7 @@ const ShowDetailsPage = ({ match }) => {
   return (
     <>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Spinner />
       ) : (
         <div className="details__container">
           <ShowCard

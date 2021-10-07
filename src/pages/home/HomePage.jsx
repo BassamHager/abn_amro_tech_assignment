@@ -7,6 +7,7 @@ import ShowCard from "../../components/showCard/ShowCard";
 
 // context
 import { ShowsContext } from "../../context/shows/showsContext";
+import Spinner from "../../components/spinner/Spinner";
 
 const HomePage = () => {
   // context
@@ -27,7 +28,7 @@ const HomePage = () => {
       {/* if loading */}
       {isLoading ? (
         // display spinner
-        <h2>Loading...</h2>
+        <Spinner />
       ) : // else =>
 
       // if shows searched existed
