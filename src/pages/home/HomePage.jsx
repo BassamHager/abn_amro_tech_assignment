@@ -29,11 +29,10 @@ const HomePage = () => {
       {isLoading ? (
         // display spinner
         <Spinner />
-      ) : // else =>
+      ) : //
 
-      // if shows searched existed
+      // else display matchingShows if searched & existed
       matchingShows?.length > 0 ? (
-        // display them
         matchingShows.map(
           ({ show: { id, name, image, rating, summary, genres } }, i) => (
             <ShowCard
@@ -48,7 +47,7 @@ const HomePage = () => {
           )
         )
       ) : (
-        // else => display genres rows
+        // else (not loading & matchingShows not existed) => display genreLists
         genreLists?.map((list) => <GenreRow key={list[0]} res={list} />)
       )}
     </div>

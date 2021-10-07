@@ -41,3 +41,8 @@ button {
 .border__rounded {
   border-radius: 20px;
 }
+
+/* scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}

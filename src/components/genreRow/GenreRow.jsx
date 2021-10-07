@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback } from "react";
+import "./GenreRow.css";
 
 // components
 import ShowCard from "../showCard/ShowCard";
@@ -8,9 +9,12 @@ const GenreRow = ({ res }) => {
   const displayRow = useCallback(([genre, showArray]) => {
     return (
       <div>
-        <hr />
-        <h2>{genre}</h2>
-        <hr />
+        <h2 className="row__genre">
+          {genre}
+          <span className="scroll__msg">
+            Shift + Scroll on cards to scroll horizontally
+          </span>
+        </h2>
 
         <div
           style={{

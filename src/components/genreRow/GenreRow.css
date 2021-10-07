@@ -1,0 +1,25 @@
+.row__genre {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0 1rem;
+  color: var(--secondary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 7rem;
+  border-radius: 4px;
+}
+
+.scroll__msg {
+  color: transparent;
+}
+
+.row__genre:hover .scroll__msg {
+  color: var(--darkener-color);
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 480px) {
+  .row__genre:hover .scroll__msg {
+    font-size: 1.4rem;
+  }
+}
