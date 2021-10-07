@@ -46,3 +46,21 @@ Simple React.js app, using tvmaze API, the state managed using React Context API
 - Create a search input to fetch, filter in & display the shows have the queried search-input in their names
 - Create a Navbar with the main title and home, about & settings icons
 - Create a Footer
+
+## How to run the app
+
+Install packages
+
+```
+npm install
+
+```
+
+Run locally
+
+```
+npm start
+```
+
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in your browser.
