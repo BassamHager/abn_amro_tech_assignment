@@ -8,7 +8,7 @@ export const AppState = ({ children }) => {
   // combine provider
   const combinedContexts = useCallback(
     (providers, components) =>
-      providers.reduce((AccProvider, CurProvider) => (
+      providers?.reduce((AccProvider, CurProvider) => (
         <AccProvider>
           <CurProvider> {components} </CurProvider>
         </AccProvider>

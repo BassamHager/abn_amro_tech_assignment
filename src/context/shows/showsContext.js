@@ -13,10 +13,6 @@ import {
 // reducer
 import showsReducer from "./showsReducer";
 
-// mock data
-import mockData from "../mock2.json";
-import details from "../details.json";
-
 // context
 import { AlertsContext } from "../alerts/alertsContext";
 
@@ -41,23 +37,20 @@ export const ShowsState = ({ children }) => {
   const { setAlert } = useContext(AlertsContext);
 
   // helper function: fetch full data, update state
-  // const fetchFullData = useCallback(async () => {
-  //   try {
-  //     // fetch url - todo
-  //     // const fetchedData = await fetch(process.env.REACT_APP_FULL_DATA_ENDPOINT);
-  //     const fetchedData = await fetch(
-  //       "https://www.youtube.com/watch?v=jiJJ2V8K1ik"
-  //     );
-  //     const parsedData = await fetchedData.json();
+  const fetchFullData = useCallback(async () => {
+    try {
+      const fetchedData = await fetch(process.env.REACT_APP_FULL_DATA_ENDPOINT);
 
-  //     // update state
-  //     dispatch({ type: FETCH_SHOWS_DATA, payload: parsedData });
+      const parsedData = await fetchedData.json();
 
-  //     // return parsedData;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }, []);
+      // update state
+      dispatch({ type: FETCH_SHOWS_DATA, payload: parsedData });
+
+      return parsedData;
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
   // helper function: takes array of objects & returns a new Map its key is genre & its value is array of objects
   const filterGenreLists = useCallback((listsArray) => {
@@ -115,8 +108,7 @@ export const ShowsState = ({ children }) => {
       dispatch({ type: SET_LOADING });
 
       // fetch shows data
-      // await fetchFullData();
-      const res = await mockData;
+      const res = await fetchFullData();
 
       // filter lists per genre
       // const listsMap = filterGenreLists(mockData);
@@ -133,7 +125,7 @@ export const ShowsState = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
-  }, [filterGenreLists, sortAndLimitLists]);
+  }, [filterGenreLists, sortAndLimitLists, fetchFullData]);
 
   // search show
   const searchShow = useCallback(
@@ -169,11 +161,11 @@ export const ShowsState = ({ children }) => {
       dispatch({ type: SET_LOADING });
 
       // fetch clicked show card details
-      // const clickedShowData = await fetch(`http://api.tvmaze.com/shows/${id}`);
-      // const parsedClickedShow = await clickedShowData.json();
-      const parsedClickedShow = details;
+      const clickedShowData = await fetch(
+        process.env.REACT_APP_SHOW_DETAILS_ENDPOINT + id
+      );
+      const parsedClickedShow = await clickedShowData.json();
 
-      // console.log(parsedClickedShow);
       // update state
       dispatch({ type: SET_SHOW_DETAILS, payload: parsedClickedShow });
     } catch (error) {

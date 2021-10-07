@@ -8,6 +8,7 @@ import Spinner from "../../components/spinner/Spinner";
 import { ShowsContext } from "../../context/shows/showsContext";
 
 const ShowDetailsPage = ({ match }) => {
+  console.log(match);
   // context
   const { getShowDetails, showDetails, isLoading } = useContext(ShowsContext);
 

@@ -27,7 +27,7 @@ const SearchShow = () => {
       else searchShow(searchInput);
 
       // clear search field
-      setSearchInput("");
+      // setSearchInput("");
     },
     [searchInput, searchShow, setAlert]
   );

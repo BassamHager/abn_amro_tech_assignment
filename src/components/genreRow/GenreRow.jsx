@@ -30,6 +30,7 @@ const GenreRow = ({ res }) => {
               image={image}
               summary={summary}
               genres={genres}
+              id={id}
             />
           ))}
           ;
