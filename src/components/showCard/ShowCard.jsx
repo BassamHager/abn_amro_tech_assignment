@@ -1,9 +1,5 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./ShowCard.css";
-
-// context
-import { ShowsContext } from "../../context/shows/showsContext";
 
 const ShowCard = ({
   name,
@@ -16,7 +12,6 @@ const ShowCard = ({
   showDetails, // embedded only when clicking a show card to manipulate style
 }) => {
   // context
-  const { clearShowDetails } = useContext(ShowsContext);
 
   // filter out html tags
   const filterString = (string) => {
@@ -24,9 +19,7 @@ const ShowCard = ({
   };
 
   return (
-    <Link
-      to={`/showDetails/${id}`} /*onClick={!showDetails && clearShowDetails}*/
-    >
+    <Link to={`/showDetails/${id}`}>
       <div className={`card ${showDetails && "showDetails"}`}>
         {/* card image */}
         <img

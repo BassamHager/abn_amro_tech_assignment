@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import "./ShowDetailsPage.css";
 
 // components
 import ShowCard from "../../components/showCard/ShowCard";
@@ -8,9 +9,9 @@ import Spinner from "../../components/spinner/Spinner";
 import { ShowsContext } from "../../context/shows/showsContext";
 
 const ShowDetailsPage = ({ match }) => {
-  console.log(match);
   // context
-  const { getShowDetails, showDetails, isLoading } = useContext(ShowsContext);
+  const { getShowDetails, showDetails, isLoading, clearShowDetails } =
+    useContext(ShowsContext);
 
   const { name, id, image, summary, genres, rating, officialSite } =
     showDetails;
@@ -24,7 +25,10 @@ const ShowDetailsPage = ({ match }) => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="details__container">
+        <div
+          className="details__container"
+          onClick={showDetails && clearShowDetails}
+        >
           <ShowCard
             name={name}
             id={id}

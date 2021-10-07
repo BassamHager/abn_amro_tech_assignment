@@ -15,16 +15,26 @@ const showsReducer = (state, action) => {
   switch (type) {
     case SET_LOADING:
       return { ...state, isLoading: true };
+
     case FETCH_SHOWS_DATA:
       return { ...state, showsData: payload };
+
     case SET_GENRES_LISTS:
       return { ...state, genreLists: payload, isLoading: false };
+
     case SEARCH_MATCHING_SHOWS:
-      return { ...state, matchingShows: payload, isLoading: false };
+      return {
+        ...state,
+        matchingShows: payload,
+        isLoading: false,
+      };
+
     case SET_SHOW_DETAILS:
       return { ...state, showDetails: payload, isLoading: false };
+
     case CLEAR_SHOW_DETAILS:
       return { showDetails: {} };
+
     default:
       return state;
   }

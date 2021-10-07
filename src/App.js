@@ -1,12 +1,11 @@
-import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // pages
 import Footer from "./components/footer/Footer";
 import HomePage from "./pages/home/HomePage";
-import AboutPage from "./pages/AboutPage";
+import AboutPage from "./pages/about/AboutPage";
 import ShowDetailsPage from "./pages/showDetails/ShowDetailsPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import NotFoundPage from "./pages/notFound/NotFoundPage";
 
 // components
 import Navbar from "./components/navbar/Navbar";

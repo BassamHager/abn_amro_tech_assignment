@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import "./SearchShow.css";
 
 // components
@@ -22,7 +22,8 @@ const SearchShow = () => {
       e.preventDefault();
 
       // alert if empty
-      if (searchInput === "") setAlert("Please type something", "danger");
+      if (searchInput === "")
+        setAlert("Please type something & be sure to be in Homepage", "danger");
       // or fetch matching shows
       else searchShow(searchInput);
 
