@@ -1,4 +1,4 @@
-import { createContext, useReducer, useCallback } from "react";
+import { createContext, useReducer, useCallback, useContext } from "react";
 
 // types
 import {
@@ -17,6 +17,9 @@ import showsReducer from "./showsReducer";
 import mockData from "../mock2.json";
 import details from "../details.json";
 
+// context
+import { AlertsContext } from "../alerts/alertsContext";
+
 export const ShowsContext = createContext();
 
 export const ShowsState = ({ children }) => {
@@ -33,6 +36,9 @@ export const ShowsState = ({ children }) => {
   const [state, dispatch] = useReducer(showsReducer, initialState);
   // destructure state
   const { isLoading, genreLists, matchingShows, showDetails } = state;
+
+  // alert context
+  const { setAlert } = useContext(AlertsContext);
 
   // helper function: fetch full data, update state
   // const fetchFullData = useCallback(async () => {
@@ -130,24 +136,31 @@ export const ShowsState = ({ children }) => {
   }, [filterGenreLists, sortAndLimitLists]);
 
   // search show
-  const searchShow = useCallback(async (searchedInput) => {
-    try {
-      // update loading
-      dispatch({ type: SET_LOADING });
+  const searchShow = useCallback(
+    async (searchedInput) => {
+      try {
+        // update loading
+        dispatch({ type: SET_LOADING });
 
-      // fetch data
-      const fetchedMatched = await fetch(
-        `https://api.tvmaze.com/search/shows?q=${searchedInput}`
-      );
+        // fetch data
+        const fetchedMatched = await fetch(
+          `https://api.tvmaze.com/search/shows?q=${searchedInput}`
+        );
 
-      const parsedResponse = await fetchedMatched.json();
+        const parsedResponse = await fetchedMatched.json();
 
-      // update state
-      dispatch({ type: SEARCH_MATCHING_SHOWS, payload: parsedResponse });
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+        // if zero result => alert user
+        parsedResponse?.length === 0 &&
+          setAlert("No results matching!", "danger");
+
+        // update state
+        dispatch({ type: SEARCH_MATCHING_SHOWS, payload: parsedResponse });
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [setAlert]
+  );
 
   // get show details => on click
   const getShowDetails = useCallback(async (id) => {
@@ -160,7 +173,7 @@ export const ShowsState = ({ children }) => {
       // const parsedClickedShow = await clickedShowData.json();
       const parsedClickedShow = details;
 
-      console.log(parsedClickedShow);
+      // console.log(parsedClickedShow);
       // update state
       dispatch({ type: SET_SHOW_DETAILS, payload: parsedClickedShow });
     } catch (error) {

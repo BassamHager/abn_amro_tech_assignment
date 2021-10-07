@@ -251,13 +251,12 @@ img {
 .site {
   margin: 2rem auto;
   color: var(--dark-secondary-color);
-  color: #ccc;
+  font-weight: bold;
   font-size: 2rem;
 }
 
-.site a {
-  color: var(--dark-secondary-color);
-  text-decoration: underline;
+.site span {
+  color: #777;
 }
 
 .site a:hover {

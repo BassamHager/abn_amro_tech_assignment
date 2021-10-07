@@ -1,14 +1,10 @@
 .alert {
   padding: 10px 17px;
   font-size: 2rem;
-  border: 1px solid var(--darkener-color);
   margin: 1rem 0;
   border-radius: 50px;
   font-weight: bold;
-}
-
-.hide {
-  display: none;
+  background: var(--darkener-color);
 }
 
 .alert-warning {
@@ -17,8 +13,8 @@
 }
 
 .alert-danger {
-  border: 1px solid orangered;
-  color: orangered;
+  border: 1px solid purple;
+  color: fuchsia;
 }
 
 .alert-info {

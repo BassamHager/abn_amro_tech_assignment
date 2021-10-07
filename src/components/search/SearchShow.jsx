@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import "./SearchShow.css";
 
 // components
@@ -39,7 +39,7 @@ const SearchShow = () => {
         {alert && <Alert message={alert.message} type={alert.type} />}
 
         {/* search form  */}
-        <form className="SearchShow__form " onSubmit={(e) => submitSearch(e)}>
+        <form onSubmit={(e) => submitSearch(e)}>
           {/* search input */}
           <input
             type="text"

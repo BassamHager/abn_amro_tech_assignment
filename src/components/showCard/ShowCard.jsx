@@ -24,7 +24,9 @@ const ShowCard = ({
   };
 
   return (
-    <Link to={`/showDetails/${id}`} onClick={!showDetails && clearShowDetails}>
+    <Link
+      to={`/showDetails/${id}`} /*onClick={!showDetails && clearShowDetails}*/
+    >
       <div className={`card ${showDetails && "showDetails"}`}>
         {/* card image */}
         <img
@@ -79,14 +81,8 @@ const ShowCard = ({
 
           {showDetails && (
             <p className="site">
-              Official Site: <br />
-              {officialSite ? (
-                <a href={officialSite} target="_blank" rel="noreferrer">
-                  {` `} {officialSite}
-                </a>
-              ) : (
-                " No official site"
-              )}
+              <span>Official Site:</span> <br />
+              {officialSite ? officialSite : " No official site"}
             </p>
           )}
         </div>
