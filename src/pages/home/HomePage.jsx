@@ -21,7 +21,7 @@ const HomePage = () => {
   return (
     <div
       className={`homePage__container ${
-        matchingShows.length > 0 && "searched__container"
+        matchingShows?.length > 0 && "searched__container"
       }`}
     >
       {/* if loading */}
@@ -31,7 +31,7 @@ const HomePage = () => {
       ) : // else =>
 
       // if shows searched existed
-      matchingShows.length > 0 ? (
+      matchingShows?.length > 0 ? (
         // display them
         matchingShows.map(
           ({ show: { id, name, image, rating, summary, genres } }, i) => (
@@ -48,7 +48,7 @@ const HomePage = () => {
         )
       ) : (
         // else => display genres rows
-        genreLists.map((list) => <GenreRow key={list[0]} res={list} />)
+        genreLists?.map((list) => <GenreRow key={list[0]} res={list} />)
       )}
     </div>
   );

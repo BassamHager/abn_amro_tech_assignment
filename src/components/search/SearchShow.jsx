@@ -36,8 +36,6 @@ const SearchShow = () => {
     <div className="container">
       <div className="SearchShow__container">
         {/* alert */}
-        {/*  */}
-        {alert && console.log(alert)}
         {alert && <Alert message={alert.message} type={alert.type} />}
 
         {/* search form  */}

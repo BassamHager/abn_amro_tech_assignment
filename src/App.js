@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import HomePage from "./pages/home/HomePage";
 import AboutPage from "./pages/AboutPage";
-import ShowDetailsPage from "./pages/ShowDetailsPage";
+import ShowDetailsPage from "./pages/showDetails/ShowDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 // components
@@ -29,7 +29,7 @@ const App = () => (
         <Route path="/about" component={AboutPage} />
 
         {/* show details */}
-        <Route path="/show/:id" component={ShowDetailsPage} />
+        <Route path="/showDetails/:id" component={ShowDetailsPage} />
 
         {/* not found */}
         <Route component={NotFoundPage} />

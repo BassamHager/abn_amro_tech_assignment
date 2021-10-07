@@ -15,6 +15,7 @@ import showsReducer from "./showsReducer";
 
 // mock data
 import mockData from "../mock2.json";
+import details from "../details.json";
 
 export const ShowsContext = createContext();
 
@@ -148,6 +149,28 @@ export const ShowsState = ({ children }) => {
     }
   }, []);
 
+  // get show details => on click
+  const getShowDetails = useCallback(async (id) => {
+    try {
+      // update loading status
+      dispatch({ type: SET_LOADING });
+
+      // fetch clicked show card details
+      // const clickedShowData = await fetch(`http://api.tvmaze.com/shows/${id}`);
+      // const parsedClickedShow = await clickedShowData.json();
+      const parsedClickedShow = details;
+
+      console.log(parsedClickedShow);
+      // update state
+      dispatch({ type: SET_SHOW_DETAILS, payload: parsedClickedShow });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+  // clear show details
+  const clearShowDetails = () => dispatch({ type: CLEAR_SHOW_DETAILS });
+
   // return provider tags loaded with desired data to surround the components that need this data
   return (
     <ShowsContext.Provider
@@ -164,6 +187,8 @@ export const ShowsState = ({ children }) => {
 
         // show details
         showDetails,
+        getShowDetails,
+        clearShowDetails,
       }}
     >
       {children}

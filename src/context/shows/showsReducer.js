@@ -1,9 +1,11 @@
 // types
 import {
-  SET_LOADING,
-  FETCH_SHOWS_DATA,
-  SET_GENRES_LISTS,
-  SEARCH_MATCHING_SHOWS,
+  SET_LOADING, // set loading = true
+  FETCH_SHOWS_DATA, // fetch for loading homepage
+  SET_GENRES_LISTS, // limit amount of shows filtered by genre & rating
+  SET_SHOW_DETAILS, // show clicked show details
+  CLEAR_SHOW_DETAILS, // clear show details
+  SEARCH_MATCHING_SHOWS, // fetch shows where names matching search input
 } from "../types";
 
 // update the state as per the action data
@@ -19,7 +21,10 @@ const showsReducer = (state, action) => {
       return { ...state, genreLists: payload, isLoading: false };
     case SEARCH_MATCHING_SHOWS:
       return { ...state, matchingShows: payload, isLoading: false };
-
+    case SET_SHOW_DETAILS:
+      return { ...state, showDetails: payload, isLoading: false };
+    case CLEAR_SHOW_DETAILS:
+      return { showDetails: {} };
     default:
       return state;
   }

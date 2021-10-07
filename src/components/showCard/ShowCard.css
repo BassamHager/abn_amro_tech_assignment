@@ -5,8 +5,20 @@
   height: 375px;
   margin: 2rem 1.2rem;
   overflow: hidden;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 10px var(--darkener-color);
   border-radius: 8px;
+}
+
+/* show */
+.card.showDetails {
+  padding: 0;
+  margin: 0 0 4rem 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  background: var(--darkener-color);
+  display: flex;
+  justify-content: center;
 }
 
 .card:hover {
@@ -16,24 +28,12 @@
   box-shadow: 0 8px 14px rgba(0, 0, 0, 0.5);
 }
 
-.card .poster {
-  position: relative;
-  overflow: hidden;
-}
-
-.card .poster::before {
-  position: absolute;
-  bottom: -182px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: linear-gradient(0deg, #000 50%, transparent);
-  transition: 0.5s;
-  z-index: 1;
-}
-
-.card:hover .poster::before {
-  bottom: 50;
+/* show todo*/
+.card:hover.showDetails {
+  cursor: default;
+  -webkit-transform: none;
+  transform: none;
+  box-shadow: none;
 }
 
 img {
@@ -41,14 +41,24 @@ img {
   object-fit: contain;
 }
 
-.card img {
-  width: 100%;
-  transition: 0.5s;
+/* show */
+.showDetails img {
+  width: 30%;
+  /* todo */
+  /* width: 30%; */
+  /* object-fit: contain; */
 }
 
 .card:hover img {
   filter: blur(5px);
   transform: translateY(-50px);
+  transition: all 0.5s ease-in-out;
+}
+
+/* show */
+.card:hover.showDetails img {
+  filter: blur(0);
+  transform: none;
 }
 
 .details {
@@ -61,14 +71,45 @@ img {
   box-sizing: border-box;
   transition: 0.7s;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--darkener-color);
   filter: blur(1px);
+  text-align: center;
+}
+
+/* show */
+.showDetails .details {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  bottom: 0;
+  transition: none;
+  filter: blur(0);
+  background: transparent;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* 
+  padding: 0;
+  width: 100%;
+  height: 75%;
+  bottom: -100px;
+  left: 0;
+  box-sizing: border-box;
+  transition: 0.7s;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  filter: blur(1px); */
 }
 
 .card:hover .details {
   bottom: 0;
   filter: blur(0);
   background: rgba(0, 0, 0, 0.7);
+}
+
+/* show */
+.card:hover.showDetails .details {
+  background: transparent;
 }
 
 .details h2 {
@@ -78,6 +119,15 @@ img {
   font-size: 20px;
 }
 
+/* show */
+.showDetails .details h2 {
+  padding: 2rem 0;
+  font-size: 4rem;
+  text-align: center;
+  background-color: var(--dark-secondary-color);
+  /* width: 100%; */
+}
+
 .rating {
   position: relative;
   padding: 5px 0;
@@ -85,8 +135,20 @@ img {
   font-weight: 700;
 }
 
+/* show */
+.showDetails .rating {
+  text-align: center;
+  padding: 6rem 0 3rem;
+  font-size: 3rem;
+}
+
 .card:hover .rating {
   color: goldenrod;
+}
+
+/* show */
+.card:hover.showDetails .rating {
+  color: var(--dark-secondary-color);
 }
 
 .rating .fas {
@@ -94,15 +156,63 @@ img {
   font-size: 1.6rem;
 }
 
+/* show */
+.showDetails .rating .fas {
+  font-size: 2rem;
+}
+
+/* summary */
+.info {
+  /* color: transparent; */
+  text-align: left;
+}
+
+/* show */
+.showDetails .info {
+  color: #ccc;
+  font-size: 2rem;
+  padding: 1rem 1rem 1rem 2rem;
+}
+
+.card:hover .info {
+  padding-top: 1rem;
+  color: #fff;
+}
+
+/* show */
+.card:hover.showDetails .info {
+  color: #ccc;
+}
+
+.info p {
+  margin: 3rem auto;
+}
+
 .tags {
   position: relative;
-  /* margin-top: 5px; */
   display: flex;
   flex-wrap: wrap;
 }
 
+/* show todo */
+.showDetails .tags {
+  justify-content: center;
+  font-size: 2rem;
+}
+
 .tags span {
   display: none;
+  background: blueviolet;
+}
+
+/* show */
+.showDetails .tags span {
+  padding: 2px 5px;
+  margin-right: 2px;
+  color: #fff;
+  font-weight: 700;
+  display: inline-block;
+  border-radius: 4px;
 }
 
 .card:hover .tags span {
@@ -112,7 +222,6 @@ img {
   font-weight: 700;
   display: inline-block;
   border-radius: 4px;
-  background: blueviolet;
 }
 
 .tags span.action {
@@ -120,7 +229,7 @@ img {
 }
 
 .tags span.drama {
-  background-color: navy;
+  background-color: blue;
 }
 
 .tags span.romance {
@@ -131,28 +240,23 @@ img {
   background-color: yellowgreen;
 }
 
-.info {
-  color: transparent;
-}
-
-.card:hover .info {
-  padding-top: 1rem;
-  color: #fff;
-}
-
-.info p {
-  /* margin: 15px 0 10px; */
-  margin: 3rem auto;
-}
-
-.star {
-  position: relative;
-}
-
 .star h4 {
   margin: 0;
   padding: 0;
   font-size: 2rem;
   border: blue solid 1px;
   color: #f7f406;
+}
+
+.site {
+  margin: 2rem auto;
+  color: var(--dark-secondary-color);
+  color: #ccc;
+  font-size: 2rem;
+}
+
+.site a {
+  color: var(--dark-secondary-color);
+  /* color: lightblue; */
+  text-decoration: underline;
 }
