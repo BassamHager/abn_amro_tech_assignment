@@ -28,10 +28,7 @@ const Navbar = () => {
 
         {/* nav items */}
         <nav>
-          <aside
-            // onBlur={() => setIsOpenSideBar(false)}
-            className={`${isOpenSideBar && "showSideBar"}`}
-          >
+          <aside className={`${isOpenSideBar && "showSideBar"}`}>
             {/* home */}
             <NavLink
               exact

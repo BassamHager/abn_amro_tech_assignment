@@ -25,7 +25,11 @@ const HomePage = () => {
         matchingShows?.length > 0 && "searched__container"
       }`}
     >
+      {/* {
+        genreLists?.map((list) => <GenreRow key={list[0]} res={list} />)} */}
+
       {/* if loading */}
+
       {isLoading ? (
         // display spinner
         <Spinner />

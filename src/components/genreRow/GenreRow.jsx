@@ -39,8 +39,6 @@ const GenreRow = ({ res }) => {
     );
   }, []);
 
-  // useEffect(() => {}, [res]);
-
   return <>{(res?.length > 0 && displayRow(res)) || ""}</>;
 };
 

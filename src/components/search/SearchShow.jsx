@@ -11,7 +11,7 @@ import { AlertsContext } from "../../context/alerts/alertsContext";
 const SearchShow = () => {
   // context
   const { searchShow } = useContext(ShowsContext);
-  const { alert, setAlert } = useContext(AlertsContext);
+  const { alert } = useContext(AlertsContext);
 
   // inner state
   const [searchInput, setSearchInput] = useState("");
@@ -21,16 +21,10 @@ const SearchShow = () => {
     (e) => {
       e.preventDefault();
 
-      // alert if empty
-      if (searchInput === "")
-        setAlert("Please type something & be sure to be in Homepage", "danger");
       // or fetch matching shows
-      else searchShow(searchInput);
-
-      // clear search field
-      // setSearchInput("");
+      searchShow(searchInput);
     },
-    [searchInput, searchShow, setAlert]
+    [searchInput, searchShow]
   );
 
   return (

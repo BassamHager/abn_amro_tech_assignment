@@ -143,6 +143,7 @@ export const ShowsState = ({ children }) => {
 
         // if zero result => alert user
         parsedResponse?.length === 0 &&
+          searchedInput !== "" &&
           setAlert("No results matching!", "danger");
 
         // update state
