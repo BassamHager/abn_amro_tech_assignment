@@ -79,7 +79,7 @@ const ShowCard = ({
 
           {showDetails && (
             <p className="site">
-              Official Site:
+              Official Site: <br />
               {officialSite ? (
                 <a href={officialSite} target="_blank" rel="noreferrer">
                   {` `} {officialSite}

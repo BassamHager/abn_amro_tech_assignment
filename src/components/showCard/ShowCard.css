@@ -257,6 +257,11 @@ img {
 
 .site a {
   color: var(--dark-secondary-color);
-  /* color: lightblue; */
   text-decoration: underline;
+}
+
+.site a:hover {
+  color: var(--secondary-color);
+  font-size: 2.1rem;
+  transition: 0.7s;
 }

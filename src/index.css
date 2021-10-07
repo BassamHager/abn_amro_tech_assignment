@@ -16,11 +16,12 @@ html {
   font-size: 62.5%;
   font-family: "Karla", monospace, sans-serif;
   scroll-behavior: smooth;
-  background: var(--theme-color);
 }
 
 body {
+  background: var(--theme-color);
   font-size: 1.6rem; /* 16px */
+  text-align: center;
 }
 
 a {
