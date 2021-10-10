@@ -10,8 +10,7 @@ import { ShowsContext } from "../../context/shows/showsContext";
 
 const ShowDetailsPage = ({ match }) => {
   // context
-  const { getShowDetails, showDetails, isLoading, clearShowDetails } =
-    useContext(ShowsContext);
+  const { getShowDetails, showDetails, isLoading } = useContext(ShowsContext);
 
   const { name, id, image, summary, genres, rating, officialSite } =
     showDetails;
@@ -25,10 +24,7 @@ const ShowDetailsPage = ({ match }) => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div
-          className="details__container"
-          onClick={showDetails && clearShowDetails}
-        >
+        <div className="details__container">
           <ShowCard
             name={name}
             id={id}
@@ -37,7 +33,7 @@ const ShowDetailsPage = ({ match }) => {
             genres={genres}
             rating={rating?.average || " no rating"}
             officialSite={officialSite}
-            showDetails
+            details={true}
           />
         </div>
       )}

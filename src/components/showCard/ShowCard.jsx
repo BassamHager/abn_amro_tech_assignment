@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./ShowCard.css";
 
 const ShowCard = ({
@@ -9,9 +9,10 @@ const ShowCard = ({
   genres,
   rating,
   officialSite,
-  showDetails, // embedded only when clicking a show card to manipulate style
+  details, // embedded only when clicking a show card to manipulate style
 }) => {
-  // context
+  // use history to control when & where should card stop functioning as a link
+  const history = useHistory();
 
   // filter out html tags
   const filterString = (string) => {
@@ -19,12 +20,19 @@ const ShowCard = ({
   };
 
   return (
-    <Link to={`/showDetails/${id}`}>
-      <div className={`card ${showDetails && "showDetails"}`}>
+    <Link
+      to={
+        history.location.pathname !== `/showDetails`
+          ? `/showDetails/${id}`
+          : "/"
+      }
+      // onClick={details && clearShowDetails}
+    >
+      <div className={`card ${details && "showDetails"}`}>
         {/* card image */}
         <img
           src={
-            showDetails
+            details
               ? image?.original
               : image?.medium ||
                 "https://w1.pngwing.com/pngs/901/630/png-transparent-camera-graphic-film-reel-roll-film-movie-camera-cinema-filmstrip-movie-projector.png"
@@ -54,7 +62,7 @@ const ShowCard = ({
             <p>
               {
                 summary /* if summary */
-                  ? showDetails /* and if showDetails */
+                  ? details /* and if showDetails */
                     ? filterString(summary) /* if both display this */
                     : filterString(summary).substring(0, 100) +
                       "..." /* if only summary do this*/
@@ -72,7 +80,7 @@ const ShowCard = ({
             ))}
           </div>
 
-          {showDetails && (
+          {details && (
             <p className="site">
               <span>Official Site:</span> <br />
               {officialSite ? officialSite : " No official site"}
