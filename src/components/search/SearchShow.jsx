@@ -1,4 +1,5 @@
 import { useCallback, useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./SearchShow.css";
 
 // components
@@ -13,6 +14,9 @@ const SearchShow = () => {
   const { searchShow } = useContext(ShowsContext);
   const { alert } = useContext(AlertsContext);
 
+  // history to control routing on submit
+  const history = useHistory();
+
   // inner state
   const [searchInput, setSearchInput] = useState("");
 
@@ -23,8 +27,11 @@ const SearchShow = () => {
 
       // or fetch matching shows
       searchShow(searchInput);
+
+      // redirect to homepage where results displayed
+      history.push("/");
     },
-    [searchInput, searchShow]
+    [searchInput, searchShow, history]
   );
 
   return (
