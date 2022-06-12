@@ -2,6 +2,10 @@
 
 Simple React.js app, using tvmaze API, the state managed using React Context API, this app lets the user views a few lists of TV shows based on different genres. Each list has a few popular TV shows based on their rating. Clicking a TV show card shall display a new screen with the details of the clicked show.
 
+## Demo
+
+![app demo screenshot](src/assets/images/abn_amro_tech_assignment.jpg)
+
 ## Requirements & Notes:
 
 1. Home page: user views a few lists(preferable horizontal list) of TV shows based on different genres (drama, comedy, sports, etc.), each list has a few popular TV shows based on their rating.
